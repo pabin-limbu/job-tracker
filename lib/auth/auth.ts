@@ -1,18 +1,18 @@
 import { betterAuth } from "better-auth";
 import { mongodbAdapter } from "better-auth/adapters/mongodb";
-
 import { headers } from "next/headers";
 import { redirect } from "next/navigation";
 import { initializeUserBoard } from "../init-user-board";
-import connectDb from "../db";
+import connectDB from "../db";
 
-const mongooseInstance = await connectDb();
+const mongooseInstance = await connectDB();
 const client = mongooseInstance.connection.getClient();
 const db = client.db();
 
 export const auth = betterAuth({
-  database: mongodbAdapter(db, { client }),
-  trustedOrigins:["http://localhost:3000","https://job-application-tracker-psi-five.vercel.app/"],
+  database: mongodbAdapter(db, {
+    client,
+  }),
   session: {
     cookieCache: {
       enabled: true,
@@ -42,6 +42,7 @@ export async function getSession() {
 
   return result;
 }
+
 export async function signOut() {
   const result = await auth.api.signOut({
     headers: await headers(),
