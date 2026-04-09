@@ -12,6 +12,7 @@ const db = client.db();
 
 export const auth = betterAuth({
   database: mongodbAdapter(db, { client }),
+  trustedOrigins:["http://localhost:3000","https://job-application-tracker-psi-five.vercel.app/"],
   session: {
     cookieCache: {
       enabled: true,
