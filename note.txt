@@ -1,0 +1,79 @@
+ALL NOTE RELATED TO THE PROJECT.
+
+> next.config.ts file let us configure settings in our next js project.
+> global.css file is the main css file in our project we import tailwind in this file.
+> installing shadcn will also install lib/utils.ts file and components.js file.
+> adding component using shadcn will create a component/ui folder and place component inside it.
+> use lucid react for the icon.
+
+> After installing the mongobd and mongoose we will create a db.ts file in lib folder to connect with database.
+
+
+##problem faced while connection mongoDB.
+- the srv version of connection string was rejected by the mongodb as found out it was due to DNS restriction.
+- also the node version was updated and in newer version the dns lookup is strict.
+- the non srv version was used and it worked.
+
+## login and signup.
+- use better auth for this.
+- first create a db and cluster > get connection string and keep it in the env file.
+- create lib/db.ts and create a function that connect database and export the function.
+- create lib/auth/auth-client.ts for client side handling better auth and lib/auth/auth.ts for server side handling better auth.
+- in auth.client ts create auth client and provide a base usr which is our base url also provide better auth secret in env.
+- better auth secret can be anything in string.
+- the auth.ts file use the db.ts to connect database and auth-client use auth to use connected database. these are done internally by betterauth.
+
+## Models / schema
+- All Object Schema are stored in models folder.
+
+## Schema
+- create schema model interface.
+- mongoose creates its model regestry internally so if we have to model registered than use it or if not create new one.
+
+
+## so how auth and auth-client file work.
+- when we start our app it does not run AIP file automatically.
+- when we call sign-in function from auth-client it request to hit endpoint to server like "/api/auth/router".
+- now this router file will execute where it will import auth file and it gets executd.    
+code: import { auth } from "@/lib/auth/auth";
+      import { toNextJsHandler } from "better-auth/next-js";
+      export const { GET, POST } = toNextJsHandler(auth);
+
+- when signin is called and api is hit, api are responsible for sending back the data where it has to handle 
+  what kind of request it is like is it a GET or POST and according to the request type the logic is written and 
+  response is sent back but in case of better auth we dont have to write the logic ourself rateher betterauth will we just
+  to destructure it and send export it.
+
+- so auth is an engine and toNextJsHandler is an helper function / adapter function to connect auth with next.js so while
+  connecting it also provide that API handling logic automatically to us.
+
+  ## Session
+  - Auth-Client can Provide session data which we can use to ideentify if client is loged in or logedout.
+
+
+  ## Proxy.ts previousely called Middleware.ts.
+  - This File is created in the root of the project.
+  - it help us to check incoming request before it reach api.
+  - this will run before every page request.
+
+  ## TypeScript types.
+  - we can create an interface in one file and use it wherever we need it.
+  - eg for all models type we can create a models.types.ts file and keep all types in there.
+
+  ## server actions.
+  - Alternative to API.
+  - without making and AIP we can directily access database and mutate data.
+  
+
+
+  ## react drag and drop.
+  - npm install @dnd-kit/core @dnd-kit/utilities @dnd-kit/sortable
+  - 
+
+          
+
+
+
+
+
+
