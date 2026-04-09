@@ -10,9 +10,17 @@ const client = mongooseInstance.connection.getClient();
 const db = client.db();
 
 export const auth = betterAuth({
+  trustedOrigins: [
+    "https://*.vercel.app", // Allows all Vercel previews
+    "http://localhost:3000", // Keep for local development
+  ],
+  // Use a dynamic baseURL so each preview deployment recognizes itself
+  baseURL: process.env.BETTER_AUTH_URL || `https://${process.env.VERCEL_URL}`,
+
   database: mongodbAdapter(db, {
     client,
   }),
+
   session: {
     cookieCache: {
       enabled: true,
