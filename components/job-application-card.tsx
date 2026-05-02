@@ -103,9 +103,8 @@ function JobApplicationCard({
               {job.description && (
                 <p className="text-xs text-muted-foreground mb-2 line-clamp-2">
                   {/* {job.description} */}
-                  <span>{job.columnId}</span>
+                  <span>{job.description}</span>
                   <br />
-                  <span>{job._id}</span>
                 </p>
               )}
               {job.tags && job.tags.length > 0 && (

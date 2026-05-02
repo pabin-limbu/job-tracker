@@ -79,7 +79,7 @@ function DropableColumn({
   const sortedJobs =
     column.jobApplications.sort((a, b) => a.order - b.order) || [];
   return (
-    <Card className="min-w-[300px] flex-shrink-0 shadow-md border-0 p-0">
+    <Card className="w-auto shadow-md border-0 p-0">
       <CardHeader
         className={`${config.color} text-white rounded-t-lg pb-3 pt-3`}
       >
@@ -87,7 +87,7 @@ function DropableColumn({
           <div className="flex items-center gap-2">
             {config.icon}
             <CardTitle className="text-white text-base font-semibold">
-              {column.name}
+              {column.name }
             </CardTitle>
           </div>
 
@@ -283,7 +283,7 @@ function KanBanBoard({ board, userId }: KanBanBoardProps) {
       onDragEnd={handleDragEnd}
     >
       <div className="space-y-4">
-        <div className="flex gap-4 overflow-x-auto pb-4">
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-2">
           {columns.map((col, key) => {
             const config = COLUMN_CONFIG[key] || {
               color: "bg-gray-500",
@@ -304,7 +304,7 @@ function KanBanBoard({ board, userId }: KanBanBoardProps) {
 
       <DragOverlay>
         {activeJob ? (
-          <div className="opacity-50">
+          <div className="opacity-50 ">
             <JobApplicationCard job={activeJob} columns={sortedColumns} />
           </div>
         ) : null}

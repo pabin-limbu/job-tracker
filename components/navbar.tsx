@@ -25,7 +25,7 @@ function NavBar() {
           className="flex items-center space-x-2 gap-2 text-xl font-semibold text-primary"
         >
           <Briefcase />
-          job tracker
+          Job Application Tracker
         </Link>
         <div className="flex items-center gap-4">
           {session?.user ? (

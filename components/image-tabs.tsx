@@ -35,7 +35,7 @@ function ImageTabs() {
           <div className="relative mx-auto max-w-5xl overflow-hidden rounded-lg border border-gray-200 shadow-xl min-h-90 w-full">
             {activeTab === "organized" && (
               <Image
-                src={"/hero-images/hero-image1.jpg"}
+                src={"/hero-images/hero-image-1.png"}
                 alt="organize application"
                 fill
                 className="object-cover"
@@ -53,7 +53,7 @@ function ImageTabs() {
 
             {activeTab === "boards" && (
               <Image
-                src={"/hero-images/hero-image3.jpg"}
+                src={"/hero-images/hero-image-2.png"}
                 alt="manage boards"
                 fill
                 className="object-cover"

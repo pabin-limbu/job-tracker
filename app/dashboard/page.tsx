@@ -23,7 +23,7 @@ async function getBoard(userId: string) {
   // const boardObj = board ? board.toObject() : null;
   // return boardObj;
 
-  console.log("board",board);
+  // console.log("board",board);
 
   if (!board) return null;
   return JSON.parse(JSON.stringify(board));
@@ -40,7 +40,9 @@ async function Dashboard() {
     <div className="min-h-screen bg-white">
       <div className="container mx-auto p-6">
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-black">{board.name}</h1>
+          <h1 className="text-3xl font-bold text-black capitalize">
+            {board.name}
+          </h1>
           <p className="text-gray-600">Track your Job Application</p>
         </div>
         <KanBanBoard board={board} userId={session.user.id} />
